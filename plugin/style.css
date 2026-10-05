@@ -1,0 +1,8 @@
+@font-face{font-family:'GEV Material Symbols';font-style:normal;font-weight:400;font-display:block;src:url('/__gev_zh_tw/icons.woff2') format('woff2')}
+.material-symbols-outlined{font-family:'GEV Material Symbols'!important;font-weight:400;font-style:normal;font-feature-settings:'liga';letter-spacing:normal;text-transform:none;white-space:nowrap;word-wrap:normal;direction:ltr;-webkit-font-smoothing:antialiased}
+#gev-language-toggle{position:fixed;bottom:12px;left:12px;z-index:10000;border:1px solid #4adbb799;border-radius:6px;background:#061416ed;color:#d4fff2;font:13px system-ui,'Microsoft JhengHei',sans-serif;cursor:pointer;padding:9px 12px;box-shadow:0 2px 10px #0008}
+#gev-language-toggle:focus-visible{outline:2px solid #4adbb7;outline-offset:3px}
+.gev-zh-tw body,.gev-zh-tw button,.gev-zh-tw select,.gev-zh-tw input{font-family:Inter,'Microsoft JhengHei','PingFang TC','Noto Sans TC',system-ui,sans-serif}
+.gev-zh-tw .material-symbols-outlined{font-family:'GEV Material Symbols'!important}
+.gev-zh-tw .panel-title,.gev-zh-tw .pp-label,.gev-zh-tw .btn-label,.gev-zh-tw .location-toolbar-label{letter-spacing:.04em}
+.gev-zh-tw .first-run-choices small{line-height:1.6}

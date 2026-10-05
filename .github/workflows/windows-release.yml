@@ -1,0 +1,27 @@
+name: Build Windows portable release
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  package:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.19.0'
+      - name: Build and verify Windows package
+        shell: pwsh
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+        run: ./scripts/build-windows.ps1
+      - name: Upload release files
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release upload v1.0.0-zh-tw output/GodsEyeView-TW-Windows-x64.zip output/GodsEyeView-Traditional-Chinese-Plugin.zip output/GodsEyeView-TW-Windows-x64.sha256 --clobber
+          if ($LASTEXITCODE -ne 0) { throw "Release upload failed" }
