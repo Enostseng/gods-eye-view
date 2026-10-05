@@ -7,7 +7,9 @@ New-Item -ItemType Directory -Force $temp, $output | Out-Null
 function Download-Verified([string]$url, [string]$sumsUrl, [string]$name) {
   $dest = Join-Path $temp $name
   Invoke-WebRequest -Uri $url -OutFile $dest
-  $sums = (Invoke-WebRequest -Uri $sumsUrl).Content
+  $sumsFile = Join-Path $temp ($name + '.sha256.txt')
+  Invoke-WebRequest -Uri $sumsUrl -OutFile $sumsFile
+  $sums = Get-Content $sumsFile -Raw
   $line = ($sums -split "`n" | Where-Object { ($_ -split '\s+')[-1].TrimStart('*') -eq $name })
   if (-not $line) { throw "Checksum missing for $name" }
   $expected = ($line.Trim() -split '\s+')[0]
